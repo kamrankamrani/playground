@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<script>
+    const Hours = new Array(24).fill();
+    const Mins = new Array(60).fill();
+    const HeightOfElements = 50;
+
+    const handleHoursClick = (scrollHour) => {
+        console.log("hour is", ((scrollHour.scrollTop) / (HeightOfElements)));
+    }
+
+    const handleMinsClick = (scrollMins) => {
+        console.log("min is", ((scrollMins.scrollTop) / (HeightOfElements)));
+    }
+</script>
+
+<body>
+    <div id="container">
+        <div id="clockContainer">
+            <div id="numbersBlock">
+                <div id="topBlursContainer">
+                    <div id="blurBlockTop" style="margin-right: 5px;"></div>
+                    <div id="blurBlockTop"></div>
+                </div>
+                <div id="bottomBlursContainer" >
+                    <div id="blurBlockBottom" style="margin-right: 5px;"></div>
+                    <div id="blurBlockBottom"></div>
+                </div>
+                <div id="hours-parent">
+                    <div key="first one" id="clockItem" >
+                        <p id="clockItemTitleText">ساعت</p>
+                    </div>
+                    <script>
+                    Hours.map((value, index) => {
+                        const div = document.createElement("div");
+                        div.setAttribute("id" ,"clockItem");
+                        div.innerHTML = `<p id="numberText">${index}</p>`;
+                        div.onclick = () => handleHoursClick(document.querySelector("#hours-parent"));
+                        document.getElementById("hours-parent").appendChild(div);
+                    })
+                </script>
+                    <div key="last one" id="clockItem">
+                    </div>
+                </div>
+                <h3 id="twoDots">
+                    :
+                </h3>
+                <div id="mins-parent">
+                    <div key="first one" id="clockItem" >
+                        <p id="clockItemTitleText">دقیقه</p>
+                    </div>
+                    <script>
+                    Mins.map((value, index) => {
+                        const div = document.createElement("div");
+                        div.setAttribute("id" ,"clockItem");
+                        div.onclick = () => handleMinsClick(document.querySelector("#mins-parent"));
+                        div.innerHTML = `<p id="numberText">${index}</p>`;
+                        document.getElementById("mins-parent").appendChild(div);
+                    })
+                </script>
+                    <div key="last one" id="clockItem">
+                        <p id="clockItemTitleText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script include="index.js"></script>
+
+</html>

@@ -1,0 +1,110 @@
+#mins-parent {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    height: 150px;
+    width: 100px;
+    background-color: #eeeeee;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-snap-type: y;
+    top: 0;
+    border-radius: 10px;
+}
+#mins-parent::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+#hours-parent {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    height: 150px;
+    width: 100px;
+    background-color: #eeeeee;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-snap-type: y;
+    top: 0;
+    border-radius: 10px;
+}
+#hours-parent::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#clock-item {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+#clock-item::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+}
+#clockContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eeeeee;
+}
+#numbersBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+#twoDots {
+    font-family: 'Vazir';
+    font-size: 1.2rem;
+}
+#clockItem {
+    width: 100%;
+    margin: 0px 0px 2px 0px;
+    background-color: #fff;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-type: start;
+}
+#topBlursContainer {
+    top: 0;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+#bottomBlursContainer {
+    bottom: 0;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+}
+#blurBlockTop {
+    background-color: #212121;
+    width: 100px;
+    height: 50px;
+    top: 0;
+    opacity: 30%;
+    border-radius: 10px 10px 0px 0px;
+}
+#blurBlockBottom {
+    background-color: #212121;
+    width: 100px;
+    height: 50px;
+    top: 0;
+    opacity: 30%;
+    border-radius: 0px 0px 10px 10px;
+}
+#numberText {
+    font-family: 'Vazir';
+    font-size: 1.1rem;
+}
+#clockItemTitleText {
+    font-family: 'Vazir';
+    font-size: 1rem;
+}
