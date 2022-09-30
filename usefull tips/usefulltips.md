@@ -11,3 +11,9 @@
     height: 0;
 }
 ```
+
+##for copy an array, use `slice()`:
+
+```
+let newarr = arr.slice();
+```
