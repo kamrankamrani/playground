@@ -12,7 +12,7 @@
 }
 ```
 
-##for copy an array, use `slice()`:
+## for copy an array, use `slice()`:
 
 ```
 let newarr = arr.slice();
