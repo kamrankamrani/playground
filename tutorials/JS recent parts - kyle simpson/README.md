@@ -1,12 +1,12 @@
 # kyle simpson - recent parts #
 
-### for string concatination: ###
+### for string concatination (Interpolated strings) : ###
 
 you can use ``` ` ``` ( back ticks!).
 
 **Tip: Enter , tabs , spaces is all includes in string. So you can add new line with _Enter_ in string.**
 
-here is a function that convert numbers is strings to the currency numbers `_attention to the comments_` :
+here is a *tagged* function that convert numbers is strings to the currency numbers *attention to the comments* :
 
 ```
 let five = 5;
