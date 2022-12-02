@@ -175,5 +175,48 @@ console.log(found)
 ```
 
 
+### Array.flat:
+
+It's get a number for input and flats the array. You can also use Infinity for all arrays:
+
+```
+let arr = [1, [1, 2], 3, 5]
+
+console.log(arr.flat(Infinity)) // [1, 1, 2, 3, 4, 5]
+```
+
+## Itrators and Generators:
+
+### For of:
+
+the point is for...of is work on any array-like object, but not ** ordinary object ** .
+
+#### for making an object iterable, we use `*` with a `Symbol.iterator` for making a `generator`:
+
+```
+let numbers = {
+    *[Symbol.iterator]({ min = 0, max = 100, step = 1 } = {}) {
+        for (let i = min; i <= max; i++) {
+            (i % step === 0) && (yield i);
+        }
+    }
+}
+
+console.log("my lucky numbers are: ", ...numbers[Symbol.iterator]({ min: 6, max: 30, step: 4 }))
+```
+
+this example shows that we can put anything in `*[Symbol.iterator]`. Even though the object is empty.
+
+
+
+
+
+
+### TODO: regular expression
+### TODO: unicode charachters?
+### TODO: generetors functions?
+
+
+
 
 
