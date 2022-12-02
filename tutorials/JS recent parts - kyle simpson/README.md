@@ -36,9 +36,9 @@ function formatCurrency(strings, ...values) { //values size always is one less t
 }
 ```
 
-### just in mind that we have a `padding` and `trimming` for strings. usefull.
+### just in mind that we have a `padding` and `trimming` for strings. usefull. ###
 
-### Destructuring:
+## Destructuring: ##
 
 ```
 function numb() {
@@ -56,7 +56,7 @@ console.log(arr); // [1, 2, 3, 4, 5]
 important note is that the arr fill with hole array not the ** pattern **.
 
 
-#### you can have empty slots in destructing. like:
+#### you can have empty slots in destructing. like: ####
 
 ```
 let [
@@ -69,12 +69,111 @@ let [
 
 in here the second in just ignored.
 
-#### simple swaping variables and positions:
+#### simple swaping variables and positions: ####
 
 ```
 let x = 10;
 let y = 20;
 [x, y] = [y, x];
 ```
+
+### Object destructing sample: ###
+
+```
+let obj = {
+    a: 2,
+    b: 3,
+    d: 42
+}
+
+let {
+    a: num1,
+    b: num2
+} = obj;
+
+num1; // 2
+```
+
+#### important note here is property always goes to the left. (source - target flipped, but property - value not flipped). ####
+
+if variables already declared, you need a `()` :
+
+```
+let obj = {
+    a: 2,
+    b: 3,
+    d: 42
+}
+
+let num1 , num2; // already declared
+
+({
+    a: num1,
+    b: num2
+} = obj);
+```
+
+## Array Methods:
+
+### Array.find :
+
+It's like map and forEach. It's get a callback function that get index and value.
+
+```
+let arr = [1, 2, 4, 10, 20, 30];
+
+arr.find((value, index) => value > 10 && console.log(value)) // 20 , 30
+```
+
+You can also check the first element that satisfies the condition. More like breaks in the loop:
+
+```
+let arr = [1, 2, 4, 10, 20, 30];
+
+const found = arr.find((value) => value > 10);
+
+console.log(found) // 20
+```
+
+### Array.findIndex:
+
+It's returns the index of first element:
+
+```
+let arr = [1, 2, 4, 10, 20, 30];
+
+const found = arr.findIndex((value) => value > 10);
+
+console.log(found) // 4
+```
+
+### Array.includes:
+
+#### best way to check true or false:
+
+It's ** new ** method added in JS and returns true or false for an element:
+
+```
+let arr = [1, 2, 4, 10, 20, 30];
+
+const found = arr.includes(12)
+
+console.log(found) // false
+```
+
+### Array.indexOf:
+
+It's like Array.findIndex but good for ** primitive ** data types. The difference is about inputs and this isn't get
+a callback function.
+
+```
+let arr = [1, 2, 4, 10, 20, 30];
+
+const found = arr.indexOf(4) // It doesn't get any callback function
+
+console.log(found)
+```
+
+
 
 
