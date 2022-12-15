@@ -44,5 +44,46 @@ obj2.a = 4;
 obj; // {a:4 , c: 3} --changed the original value
 ```
 
+## what is [object  Object] means?
+
+It is exposing internall class and kind of object you use. Because we have multiple types of objects like functions, arrays ,... .
+
+for example when you use `toString()` method on objects, It is exposing internall class:
+
+```
+let obj = {
+    a: 2,
+    b: 3
+}
+
+console.log(obj.toString()) //[object Object]
+```
+It means you have an object with Objects class constructor. (it's object from Object).
+
+
+## why we have arr.toString() ? why it's working perfect?
+
+for example:
+
+```
+let arr = [1,2,3]
+
+console.log(arr.toString()) // 1,2,3
+```
+because arrays have ovverwrite toString method. It returns concatination of values of array.
+
+But if you want to use the real and orginal type of `toString()` you should use `prototype` :
+
+```
+let arr = [1, 2, 3];
+
+console.log(arr.toString()) // 1,2,3
+
+console.log(Object.prototype.toString.call(arr)) // [Object Array]
+```
+
+Intresting... Isn't it?? :)
+
+
 
 
