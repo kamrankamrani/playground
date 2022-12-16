@@ -84,6 +84,68 @@ console.log(Object.prototype.toString.call(arr)) // [Object Array]
 
 Intresting... Isn't it?? :)
 
+## JSON.stringify:
+
+in `JSON.stringify` , the `undefined` and `function` and `symbols` is ommited automatically.
+
+In arrays they replace by `null` , but in objects they are completly ommited:
+
+```
+let arr = [1, undefined, 3];
+
+console.log(JSON.stringify(arr)) // [1 , null , 3]
+
+let obj = {
+    a: 2,
+    b: undefined
+}
+
+console.log(JSON.stringify(obj)) // {"a":2}
+```
+
+## Falsy values in JS:
+
+```
+NaN
+0
+-0
++0
+false
+null
+undefined
+""
+```
+
+### tip: {} is true value. We don't have falsy object. all objects are true!
+
+
+## Coercion on adding ( + ) values:
+
+if only one value is string, all values become a string concatination:
+
+```
+let a = "1";
+let b= 2;
+console.log(a + b); // 12 --> string
+```
+
+if all is numbers, all adding togheter mathematically;
+
+### tip: if a value is null or undefined or ... the result is `NaN`.
+
+## Coercion on adding ( + ) values:
+
+apparently all coerce to number. the result is always a number:
+
+```
+let a = "1";
+let b = 2;
+console.log(a - b); // -1 --> number
+```
+
+
+
+
 
 
 
