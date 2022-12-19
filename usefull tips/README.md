@@ -125,7 +125,7 @@ if only one value is string, all values become a string concatination:
 
 ```
 let a = "1";
-let b= 2;
+let b = 2;
 console.log(a + b); // 12 --> string
 ```
 
@@ -133,7 +133,7 @@ if all is numbers, all adding togheter mathematically;
 
 ### tip: if a value is null or undefined or ... the result is `NaN`.
 
-## Coercion on adding ( + ) values:
+## Coercion on minus ( - ) values:
 
 apparently all coerce to number. the result is always a number:
 
