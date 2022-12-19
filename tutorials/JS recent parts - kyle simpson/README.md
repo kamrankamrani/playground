@@ -53,7 +53,7 @@ arr = [obj.first, second, third, ...obj.rest] = numb();
 console.log(arr); // [1, 2, 3, 4, 5]
 ```
 
-important note is that the arr fill with hole array not the ** pattern **.
+important note is that the `arr` fill with hole array returns from `numb()` not the **pattern**.
 
 
 #### you can have empty slots in destructing. like: ####
@@ -151,7 +151,7 @@ console.log(found) // 4
 
 #### best way to check true or false:
 
-It's ** new ** method added in JS and returns true or false for an element:
+It's **new** method added in JS and returns true or false for an element:
 
 ```
 let arr = [1, 2, 4, 10, 20, 30];
@@ -163,7 +163,7 @@ console.log(found) // false
 
 ### Array.indexOf:
 
-It's like Array.findIndex but good for ** primitive ** data types. The difference is about inputs and this isn't get
+It's like Array.findIndex but good for **primitive** data types. The difference is about inputs and this isn't get
 a callback function.
 
 ```
@@ -189,7 +189,7 @@ console.log(arr.flat(Infinity)) // [1, 1, 2, 3, 4, 5]
 
 ### For of:
 
-the point is for...of is work on any array-like object, but not ** ordinary object ** .
+the point is for...of is work on any array-like object, but not **ordinary object** .
 
 #### for making an object iterable, we use `*` with a `Symbol.iterator` for making a `generator`:
 
