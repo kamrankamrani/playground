@@ -143,6 +143,17 @@ let b = 2;
 console.log(a - b); // -1 --> number
 ```
 
+## How virtual DOM is faster than updating real DOM? How React do it?
+
+Modern browsers are smart enuogh to update only parts that it needs.
+
+The story comes from **un-ability** of react. Because when a state chenge or an interaction occures, all of the react app
+should be updated.
+
+This is where the virtual DOM comes in. In the update state, react extracts only parts that needs to update.
+
+And then tell to real DOM to update those parts.
+
 
 
 
