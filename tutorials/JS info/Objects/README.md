@@ -41,6 +41,8 @@ const myObj = {
 console.log("2" in myObj); // true
 ```
 
+#### tip: `in` keyword is looking hole prototype chain. Not only obj level.
+
 ### Name of all type objects (arrays , objects , ... ) is const. It is a refrence.
 
 
