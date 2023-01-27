@@ -54,3 +54,7 @@ Added in 2015. Get a prototype of an object.
 
 #### tip: don't change prototype of on object in time. It is not optimized for JS.
 
+## Object.keys: 
+
+Return all `key` in an array in **same level**. Not prototype chain.
+

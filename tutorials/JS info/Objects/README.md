@@ -119,3 +119,30 @@ alert(Animal); //from symbol
 ### Symbol.iterator:
 
 Use for `for...of` method for objects and iterables.
+
+## Accessor properties:
+
+A property for access and set data.
+
+### Getters and Setters:
+
+set or get a property in desired way. It's like a middleware or a wrapper for how you access properties.
+
+```
+const Animal = {
+    set food(value) {
+        this._food = value;  //<--- we have _food not food
+    },
+    get food() {
+        return `the food is ${this._food}`
+    },
+}
+
+const Rabbit = Object.create(Animal);
+
+Rabbit.food = "carrot";
+
+console.log(Rabbit.food); // the food is carrot
+```
+
+#### tip: don't use same prop in get and set. Causes errors.
