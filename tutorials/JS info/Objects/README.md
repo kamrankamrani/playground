@@ -52,6 +52,8 @@ console.log("2" in myObj); // true
 Object.assign(destination, ...sources); <-- you can use more than one object for cloning.
 ```
 
+#### tip: `...` spread syntax is just like Object.assign. (shallow copy)
+
 ## structedClone  --> Deep copy with nested. As you expected.
 
 ```
