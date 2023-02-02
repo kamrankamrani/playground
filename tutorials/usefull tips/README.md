@@ -154,6 +154,37 @@ This is where the virtual DOM comes in. In the update state, react extracts only
 
 And then tell to real DOM to update those parts.
 
+## Macrotask and Microtasks:
+
+Every script , event handlers , user actions ... are **macrotask**.
+
+Every promise reslove/reject/catch actions are **microtasks**.
+
+The running process is :
+
+```
+1 => macro task 2 => micro task 3 => wait for other macrotask.
+```
+
+#### tip: setTimeout (() => function , 0 ) , add execution of function for the next macrotask queue.
+
+This code runs in this order:
+
+```
+setTimeout(() => alert("timeout"));
+
+Promise.resolve()
+  .then(() => alert("promise"));
+
+alert("code");
+
+// 1 => alert("code") 2 => alert("promise") 3 => alert("timeout")
+```
+
+#### tip: render/update UI , is executed after one macro + micro task is completly empty.
+
+
+
 
 
 
