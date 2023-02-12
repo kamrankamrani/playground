@@ -44,4 +44,18 @@ console.log(fib.length); //1
 
 ### arrow functions has no **this**. It get his `this` from outside if exist. It inherit from parent.
 #### tip: `this` in arrow functions is bypass by default to window in non strict.
-#### tip: but if you wrapp arrow function in a regular function, this will work just like function.
+###  tip: but if you wrapp arrow function in a regular function, this will work just like function.
+
+
+## Function.bind:
+
+bind returns a new refrence with a exact same contex for every moment. This is hard binding.
+
+#### tip: with binding, you have a new refrence. it is not called. you should call it.
+
+
+## Function.apply / call :
+
+Call a function with contex in first argument. real call not refrence.
+
+#### tip: call get list of arguments and apply get an array. use `...` for call.
