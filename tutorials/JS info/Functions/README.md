@@ -39,3 +39,9 @@ function fib(number) {
 
 console.log(fib.length); //1
 ```
+
+## Arrow function:
+
+### arrow functions has no **this**. It get his `this` from outside if exist. It inherit from parent.
+#### tip: `this` in arrow functions is bypass by default to window in non strict.
+#### tip: but if you wrapp arrow function in a regular function, this will work just like function.
