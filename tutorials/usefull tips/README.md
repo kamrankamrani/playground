@@ -184,6 +184,20 @@ alert("code");
 #### tip: render/update UI , is executed after one macro + micro task is completly empty.
 
 
+## Controlled component VS Uncontrolled component in React:
+
+mostly use for `forms` or `inputs`.
+
+with uncontrolled component, we let **DOM** do controling events and actions. likely let them on natural roles.
+
+Uncontrolled component don't have any states or event handlers.
+
+For access values in uncontrolled component, we use **useRef** with react.
+
+With controlled component, we have event handler and states and let **React** control form.
+
+#### tip: better to use controlled because app stays in sycnh with react.
+
 
 
 
