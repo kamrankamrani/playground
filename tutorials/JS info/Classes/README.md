@@ -37,5 +37,30 @@ extended constructor function is a unique case for this behavior.
 
 `private` is accessible form **inside** class but not from outside. **Even extended classess**.
 
+`private` must start with **#**.
+
+```
+class CoffeeMachine {
+  #waterLimit = 200;
+
+  setWaterAmount(value) {
+    this.#waterLimit = value;
+  }
+
+}
+```
+
+## Protected fields:
+
+`protected` is not in JS but we can emulate them with `getters and setters`.
+
+TODO: purpose of protected??
+
+## instanceof
+
+the main syntax is `obj instanceof Class`.
+
+
+
 
 
