@@ -102,3 +102,7 @@ cy.get("[data-test=test]").eq(0).click() // click on the first element
 ## each()
 
 Iterate over an array , ... . It is like `map` function in javascript.
+
+# Mocking APIs:
+
+## cy.intercept:
