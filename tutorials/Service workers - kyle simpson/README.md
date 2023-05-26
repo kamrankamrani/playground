@@ -70,3 +70,62 @@ window.addEventListener("offline", function offline() {
 });
 ```
 
+### Create a service worker
+
+```
+var usingSW = ("serviceWorker" in navigator);
+var swRegistration;
+var svcWorker;
+	
+async function initServiceWorker() {
+	swRegistration = await navigator.serviceWorker.register("/sw.js", {
+		updateViaCache: "none"
+	});
+
+	svcWorker = swRegistration.installing || swRegistration.waiting || swRegistration.active; //3 phase of sw
+
+	navigator.serviceWorker.addEventListener("controllerchange", function ctrchange {
+		svcWorker = navigator.serviceWorker.controller; //this is for new service workers
+	})
+}
+```
+
+### basic service worker code
+
+```
+"use strict";
+
+// TODO
+const version = 1;
+
+self.addEventListener("install", onInstall);
+self.addEventListener("activate", onActivate);
+
+main().catch(console.error);
+
+async function main() {
+    console.log(`service worker v${version} is starting...`);
+}
+
+async function onInstall(evt) {
+    console.log(`service worker v${version} is installed.`);
+    self.skipWaiting(); //no need to hard refresh for new content
+}
+
+function onActivate(evt) {
+    evt.waitUntil(handleActivation()); //tells browser wait untill this function is done
+}
+
+async function handleActivation() {
+    await clients.claim();
+    console.log(`service worker v${version} is activated.`);
+}
+```
+
+### get message from sw
+
+just like a normal worker:
+
+```
+navigator.serviceWorker.addEventListener("message", onSWMessage);
+```
