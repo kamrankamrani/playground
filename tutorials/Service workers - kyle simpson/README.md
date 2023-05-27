@@ -10,7 +10,7 @@ if all tabs is closed, `workers` dies within tabs. but `service workers` can sur
 
 A dedicated worker is only accessible from the script that first spawned it, whereas shared workers can be accessed from multiple scripts.
 
-## Start a workers
+## Start a worker
 
 ```
 const worker = new Worker("/js/worker.js"); // address of file 
@@ -122,10 +122,174 @@ async function handleActivation() {
 }
 ```
 
-### get message from sw
+### recieve message from service worker
 
 just like a normal worker:
 
 ```
 navigator.serviceWorker.addEventListener("message", onSWMessage);
+```
+
+### send message to service worker
+
+```
+function sendSWMessage(msg, target) { //this logic automatically pick current active sw
+	if (target) {
+		target.postMessage(msg);
+	}
+	else if (svcWorker) {
+		svcWorker.postMessage(msg);
+	}
+	else {
+		navigator.serviceWorker.controller.postMessage(msg);
+	}
+}
+```
+
+and **target** is:
+
+```
+evt.ports && evt.ports[0] //evt is event from "message" event in getting service worker message
+```
+
+ports is something like a channel for multiple pages talking to sw.
+
+it is like updating for all pages.
+
+### recieve message from client in service worker
+
+```
+self.addEventListener("message" , onMessage);
+```
+
+### send message to client in service worker
+
+it is a little bit complicated and I don't know what exactly happens, but it works:
+
+```
+async function sendMessage(msg) {
+    const allClients = await clients.matchAll({ includeUncontrolled: true });
+
+    return Promise.all[
+        allClients.map((client) => {
+            const chan = new MessageChannel();
+            chan.port1.onmessage = onMessage;
+            return client.postMessage(msg, [chan.port2]);
+        })
+    ]
+}
+```
+
+
+## Cache
+
+first build your object for cache urls. you can have `admin/user` or `loggedin/out`.
+
+```
+const cacheName = `cache-${version}`;
+
+const urlsToCache = {
+    loggedOut: [
+        "/",
+        "/about",
+        "/contact",
+        "/login",
+        "/404",
+        "/offline",
+        "/js/blog.js",
+        "/js/home.js",
+        "/js/login.js",
+        "/js/add-post.js",
+        "images/logo.gif",
+        "/images/offline.png",
+        "/css/style.css"
+    ]
+}
+```
+
+for put caches into browser, use this logic:
+
+```
+async function cacheLoggedOutFiles(forcedReload = false) {
+    const cache = await caches.open(cacheName);
+
+    return Promise.all(
+        urlsToCache.loggedOut.map(async (url) => {
+            try {
+                let res;
+                if (!forcedReload) {
+                    res = await cache.match(url);
+                    if (res) {
+                        return res;
+                    }
+                }
+                let fetchOptions = {
+                    method: "GET",
+                    cache: "no-cache",
+                    credentials: "omit"
+                };
+                res = await fetch(url, fetchOptions);
+                if (res.ok) {
+                    await cache.put(url, res);
+                }
+                else {
+                    console.log("fetch is not ok");
+                }
+            } catch (error) {
+                console.log(`cache error ${error}`);
+            }
+        })
+    )
+}
+```
+
+where to call this function?
+
+in the `main` function **without force** and in the `handleActivation` **with force true**.
+
+### request
+
+enable fetch event:
+
+```
+self.addEventListener("fetch", onFetch);
+```
+
+you can have various methods. here is some basic (server first):
+
+```
+async function onFetch(evt) {
+    evt.respondWith(router(evt.request));
+}
+
+async function router(req) {
+    let url = new URL(req.url);
+    let reqUrl = url.pathname;
+    let cache = await caches.open(cacheName);
+    let res;
+
+    if (url.origin == location.origin) {
+        try {
+            let fetchOptions = {
+                method: req.method,
+                headers: req.headers,
+                credentials: "omit",
+                cache: "no-store"
+            };
+            res = await fetch(req.url, fetchOptions);
+            if (res && res.ok) {
+                await cache.put(reqUrl, res.clone());
+                return res;
+            }
+        } catch (error) {
+            // console.log(`router func error ${error}`);
+        }
+
+        res = await cache.match(reqUrl);
+
+        if (res) {
+            return res.clone();
+        }
+    }
+}
 ```
