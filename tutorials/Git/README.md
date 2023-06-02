@@ -46,6 +46,8 @@ It points to a tree. It contains info about our commit. (author, date, message .
 
 ## Get information of git:
 
+#### tip: you don't need to `cd` in `.git` directory
+
 ```
 git cat-file -t (for type) OR -p (for content) SHA1( about 5 character of hash)
 
@@ -68,6 +70,35 @@ ex: git cat-file -p f16473
 
 - files are finalized and tracked by git. git knows about these files.
 
+### Git remove files from staging area:
+
+If you added a file with `git add` , and you don't want that, then use:
+
+```
+git reset
+```
+
+## Git change branch to a specific commit:
+
+- you can move your head pointer to a specific commit.
+
+```
+git checkout e348ebc <-- this is specific hash for a commit
+```
+
+this state is called **HEAD-LESS** or **DETACHED-HEAD**.
+
+if you commit new changes and then checkout to other branch, your commits are **garbage collected**.
+
+
+
+
+
+
+
+
+
+
 ## log in one line
 
 ```
@@ -80,8 +111,26 @@ git log --oneline
 git branch <branch-name>
 ```
 
-## move file directly from working area to repo (without add):
+## Clone with ssh:
+
+I assume you your basic `ssh` setup. (ssh-keygen)
+
+start the service:
+```
+eval "$(ssh-agent -s)"
+```
+
+then:
+```
+ ssh-add ~/.ssh/github_kamran
+```
+
+## move file directly from working area to repo (without add): NOT SURE
 
 ```
 git commit -a <text>
 ```
+
+## Q&Q:
+
+- git stash?
