@@ -20,6 +20,10 @@
 
 - in `.git/HEAD` shows current working branch that git points to.
 
+- working directory is in sync with local file system.
+
+- staging index (directory) is tracking working directory changes
+
 
 
 ## Object types in git
@@ -44,7 +48,7 @@ trees are points to blobs and other trees.
 It points to a tree. It contains info about our commit. (author, date, message ...).
 ```
 
-## Get information of git:
+## Get information of commit:
 
 #### tip: you don't need to `cd` in `.git` directory
 
@@ -66,9 +70,15 @@ ex: git cat-file -p f16473
 
 - in here git know about different between two files.
 
+#### show files in staging area:
+
+```
+git ls-files -s
+```
+
 ### repo:
 
-- files are finalized and tracked by git. git knows about these files.
+- The history. files are finalized and tracked by git. git knows about these files.
 
 ### Git remove files from staging area:
 
@@ -90,28 +100,162 @@ this state is called **HEAD-LESS** or **DETACHED-HEAD**.
 
 if you commit new changes and then checkout to other branch, your commits are **garbage collected**.
 
+### create and change branch
+
+```
+git checkout -b <branch-name>
+```
+
+### delete a branch
+
+```
+git branch -d <branch-name>
+```
+
+## Merge
+
+- If `main` branch in not changed and only `feature` branch is changed this is called **Fast Forwarding** merge.
+
+- FF is usefull for minor changes and bug fixes. It is like `rebase`.
+
+- FF is called a linear commit. no new commit is added to history.
+
+- If you want new commit for merge moment, use `--no-ff` flag with `merge` command.
+
+### conflict format:
+
+```
+# started by this
+
+<<<<<<< HEAD
+# here is your content from head (base) branch
 
 
+# this devide your merge into two chunks
+=======
 
 
+# here is your content from side branch
+>>>>>>> branch-a
+#this line above show end of conflict
+```
 
+#### tip: after resolve conflicts simple `git commit` is enough for merge.
 
+## History
 
+for show commit history we use `git log`. some usefull flags:
 
+### for a chunk of time. like yesterday , 2 weeks ago ...
+```
+ git log --since="yesterday"
+```
 
-## log in one line
+### for one line and brief
 
 ```
 git log --oneline
 ```
 
-## create new branch without switch to that branch
+### graph for show branch changes
+
+```
+git log --graph
+```
+
+### show more information about a commit
+
+```
+git show <hash>
+```
+
+### search for rename or moved files:
+
+```
+git log --name-status --follow --oneline <filename>
+```
+
+### search in commits:
+
+```
+git log --grep="fix"
+```
+
+### check what branches are merged/not merged:
+
+```
+git branch --merged OR --no-merged <branch-name>
+```
+
+## mistakes:
+
+- If you changed a file and still **didn't** use `git add`, use this: (like CTRL+Z):
+
+```
+git checkout -- <filename>
+```
+
+- If you added files with `git add` and still **didn't** use `git commit`, use this:
+
+```
+git reset HEAD <filename>
+```
+
+this command moves file from `staging area` to `working area`.
+
+- If you commited work, and want to get back:
+
+```
+git reset --mixed HEAD~
+```
+
+#### tip:
+
+```
+git reset --mixed HEAD === git reset
+```
+
+#### tip: you can use number for steps to go back: ex. 2 steps:
+
+```
+git reset --mixed HEAD~2
+```
+
+- If you want a safe revert, use this:
+
+```
+git revert <HASH>
+```
+
+## Rewriting history:
+
+- To change very last commit, after `git add` use `amend` flag:
+
+```
+git commit --amend
+```
+
+- Rebase is bring all of branch history on top of your branch:
+
+```
+git rebase <branch-name>
+```
+
+## some random usefull commands:
+
+### log in one line
+
+```
+git log --oneline
+```
+
+### create new branch without switch to that branch
 
 ```
 git branch <branch-name>
 ```
 
-## Clone with ssh:
+### Clone with ssh:
 
 I assume you your basic `ssh` setup. (ssh-keygen)
 
@@ -125,7 +269,7 @@ then:
  ssh-add ~/.ssh/github_kamran
 ```
 
-## move file directly from working area to repo (without add): NOT SURE
+### move file directly from working area to repo (without add): NOT SURE
 
 ```
 git commit -a <text>
@@ -134,3 +278,4 @@ git commit -a <text>
 ## Q&Q:
 
 - git stash?
+- git merge? how I see conflict?
