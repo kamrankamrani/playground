@@ -24,8 +24,8 @@ let newarr = arr.slice();
 const obj = {a:2 , b:3};
 Object.keys(obj).length //2
 ```
-#### tip: it's not in Object.prototype .
 
+#### tip: it's not in Object.prototype .
 
 ## some fun fact about strings is JS:
 
@@ -33,7 +33,6 @@ Object.keys(obj).length //2
 - strings are not arrays but you can treat them like arrays. That's why string has some properties like arrays. ex: .length.
 - you can borrow some `nonmutable` array method like `.join` for strings.
 - you can borrow like: `Array.prototype.join.call(string)`.
-
 
 ## Objects (objs, arrays ...) can act like refrences. if you copy refrence and chenge the value, the shared object is changed too:
 
@@ -44,7 +43,7 @@ obj2.a = 4;
 obj; // {a:4 , c: 3} --changed the original value
 ```
 
-## what is [object  Object] means?
+## what is [object Object] means?
 
 It is exposing internall class and kind of object you use. Because we have multiple types of objects like functions, arrays ,... .
 
@@ -58,8 +57,8 @@ let obj = {
 
 console.log(obj.toString()) //[object Object]
 ```
-It means you have an object with Objects class constructor. (it's object from Object).
 
+It means you have an object with Objects class constructor. (it's object from Object).
 
 ## why we have arr.toString() ? why it's working perfect?
 
@@ -70,6 +69,7 @@ let arr = [1,2,3]
 
 console.log(arr.toString()) // 1,2,3
 ```
+
 because arrays have ovverwrite toString method. It returns concatination of values of array.
 
 But if you want to use the real and orginal type of `toString()` you should use `prototype` :
@@ -117,7 +117,6 @@ undefined
 ```
 
 ### tip: {} is true value. We don't have falsy object. all objects are true!
-
 
 ## Coercion on adding ( + ) values:
 
@@ -183,7 +182,6 @@ alert("code");
 
 #### tip: render/update UI , is executed after one macro + micro task is completly empty.
 
-
 ## Controlled component VS Uncontrolled component in React:
 
 mostly use for `forms` or `inputs`.
@@ -198,10 +196,6 @@ With controlled component, we have event handler and states and let **React** co
 
 #### tip: better to use controlled because app stays in sycnh with react.
 
+## TODO: delete
 
-
-
-
-
-
-
+[app://rbif-app](app://rbif-app)
