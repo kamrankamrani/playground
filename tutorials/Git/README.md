@@ -24,8 +24,6 @@
 
 - staging index (directory) is tracking working directory changes
 
-
-
 ## Object types in git
 
 ### blob:
@@ -122,6 +120,12 @@ git branch -d <branch-name>
 
 - If you want new commit for merge moment, use `--no-ff` flag with `merge` command.
 
+### when we get commit message and when we don't?
+
+- If both branches diverged (changes in history included), then you will need a merge commit message
+
+- If there is no history change in source branch (the branch that you are trying to merge to that), then you will not get any merge commit message and your merge is **fast forwarded**!
+
 ### conflict format:
 
 ```
@@ -147,6 +151,7 @@ git branch -d <branch-name>
 for show commit history we use `git log`. some usefull flags:
 
 ### for a chunk of time. like yesterday , 2 weeks ago ...
+
 ```
  git log --since="yesterday"
 ```
@@ -161,6 +166,14 @@ git log --oneline
 
 ```
 git log --graph
+```
+
+### logging with parents SHA
+
+```
+git log --oneline --graph --parents
+
+output -> <commit-SHA> <parent-SHA> <commit-text>
 ```
 
 ### show more information about a commit
@@ -241,6 +254,12 @@ git commit --amend
 git rebase <branch-name>
 ```
 
+## Merge vs Reabse:
+
+- History! With rebase we put all source branch first and then we will put history of target branch
+
+- For merge, we will merge history (commits) based on their time. No priority for histories.
+
 ## some random usefull commands:
 
 ### log in one line
@@ -260,11 +279,13 @@ git branch <branch-name>
 I assume you your basic `ssh` setup. (ssh-keygen)
 
 start the service:
+
 ```
 eval "$(ssh-agent -s)"
 ```
 
 then:
+
 ```
  ssh-add ~/.ssh/github_kamran
 ```
@@ -277,5 +298,4 @@ git commit -a <text>
 
 ## Q&Q:
 
-- git stash?
 - git merge? how I see conflict?
