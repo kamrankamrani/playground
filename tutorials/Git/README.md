@@ -254,11 +254,29 @@ git commit --amend
 git rebase <branch-name>
 ```
 
-## Merge vs Reabse:
+## Merge vs Rebase:
 
 - History! With rebase we put all source branch first and then we will put history of target branch
 
 - For merge, we will merge history (commits) based on their time. No priority for histories.
+
+### a tip about rebase:
+
+When you rebase on a branch, git **will checkout the branch first**. Then places all commits on top of it.
+
+That's why for rebase conflicts, you may see HEAD is on branch you want to rebase on!
+
+## Squash:
+
+- It is an interactive rebase. We can `fixup` or `squash`.
+
+```
+git rebase -i HEAD~<number of commit>
+```
+
+Then it will show you commit from oldest to newest commits. You can read the manual - usually use `s` for merging to commits into previous one.
+
+#### tip: you can't use `s` or `f` for oldest commit. It will throw an error because there is no previous commit.
 
 ## some random usefull commands:
 
