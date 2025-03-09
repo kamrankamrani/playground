@@ -1,6 +1,6 @@
 # Git tutorial
 
-## general info
+> ## general info
 
 - git is for storing data
 
@@ -24,7 +24,7 @@
 
 - staging index (directory) is tracking working directory changes
 
-## Object types in git
+> ## Object types in git
 
 ### blob:
 
@@ -46,7 +46,7 @@ trees are points to blobs and other trees.
 It points to a tree. It contains info about our commit. (author, date, message ...).
 ```
 
-## Get information of commit:
+### Get information of commit:
 
 #### tip: you don't need to `cd` in `.git` directory
 
@@ -56,7 +56,7 @@ git cat-file -t (for type) OR -p (for content) SHA1( about 5 character of hash)
 ex: git cat-file -p f16473
 ```
 
-## Git areas:
+> ## Git areas:
 
 ### Working area:
 
@@ -86,7 +86,7 @@ If you added a file with `git add` , and you don't want that, then use:
 git reset
 ```
 
-## Git change branch to a specific commit:
+> ## Git change branch to a specific commit:
 
 - you can move your head pointer to a specific commit.
 
@@ -110,7 +110,7 @@ git checkout -b <branch-name>
 git branch -d <branch-name>
 ```
 
-## Merge
+> ## Merge
 
 - If `main` branch in not changed and only `feature` branch is changed this is called **Fast Forwarding** merge.
 
@@ -146,7 +146,7 @@ git branch -d <branch-name>
 
 #### tip: after resolve conflicts simple `git commit` is enough for merge.
 
-## History
+> ## History
 
 for show commit history we use `git log`. some usefull flags:
 
@@ -194,13 +194,19 @@ git log --name-status --follow --oneline <filename>
 git log --grep="fix"
 ```
 
+### search in specific file:
+
+```
+git log -p -- <specific-file>
+```
+
 ### check what branches are merged/not merged:
 
 ```
 git branch --merged OR --no-merged <branch-name>
 ```
 
-## mistakes:
+> ## mistakes:
 
 - If you changed a file and still **didn't** use `git add`, use this: (like CTRL+Z):
 
