@@ -206,6 +206,21 @@ git log -p -- <specific-file>
 git branch --merged OR --no-merged <branch-name>
 ```
 
+> ## git bisect:
+
+- If you want a commit to find and ex. it causes failing your tests and you don't know where this issue created.
+- It will list you commits, start to search and you can find the commit that causes the issue.
+
+```
+git bisect start
+... run the tests ...
+git bisect bad
+... run the tests ...
+git bisect good
+```
+
+there is also `git bisect run`. Do research.
+
 > ## mistakes:
 
 - If you changed a file and still **didn't** use `git add`, use this: (like CTRL+Z):
@@ -246,7 +261,7 @@ git reset --mixed HEAD~2
 git revert <HASH>
 ```
 
-## Rewriting history:
+> ## Rewriting history:
 
 - To change very last commit, after `git add` use `amend` flag:
 
@@ -260,7 +275,7 @@ git commit --amend
 git rebase <branch-name>
 ```
 
-## Merge vs Rebase:
+### Merge vs Rebase:
 
 - History! With rebase we put all source branch first and then we will put history of target branch
 
@@ -272,7 +287,7 @@ When you rebase on a branch, git **will checkout the branch first**. Then places
 
 That's why for rebase conflicts, you may see HEAD is on branch you want to rebase on!
 
-## Squash:
+### Squash:
 
 - It is an interactive rebase. We can `fixup` or `squash`.
 
@@ -284,7 +299,19 @@ Then it will show you commit from oldest to newest commits. You can read the man
 
 #### tip: you can't use `s` or `f` for oldest commit. It will throw an error because there is no previous commit.
 
-## some random usefull commands:
+> ## Working tree:
+
+- Alternative for `Stash`. It will copy a new folder and will sync and track with main working tree which you created with `git init`.
+
+```
+git worktree add <worktree relative path>
+
+ex: git worktree add ../foo-bar
+```
+
+- Then if you go to the foo-bar folder, you can track all changes. It is also synced with new changes.
+
+> ## some random usefull commands:
 
 ### log in one line
 
@@ -322,4 +349,4 @@ git commit -a <text>
 
 ## Q&Q:
 
-- git merge? how I see conflict?
+- git revert?
