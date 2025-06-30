@@ -1,0 +1,9 @@
+this is a text file
+
+This is so cool
+
+This is edited
+
+
+this is added when tailing a file
+kam

@@ -1,0 +1,17 @@
+total 16
+drwxr-xr-x  16 kamran  staff  512 Jun 30 21:24 .
+drwxr-xr-x   5 kamran  staff  160 Jun 30 21:04 ..
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:15 error.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-1.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-10.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-2.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-3.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-4.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-5.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-6.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-7.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-8.txt
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:22 file-9.txt
+-rw-r--r--   1 kamran  staff   55 Jun 30 21:23 grep
+-rw-r--r--   1 kamran  staff    0 Jun 30 21:24 grep.txt
+-rw-r--r--   1 kamran  staff  215 Jun 30 21:15 log.txt
