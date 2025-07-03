@@ -212,3 +212,111 @@ Usefull example with `ps aux`
 - second 3-block: rwx -> read / write / execute by group of the current user
 
 - third 3-block: rwx -> read / write / execute by everyone else
+
+## Enviroments
+
+### print all env variables:
+
+```
+printenv
+```
+
+### Add temporary (session based) variables:
+
+```
+USER=show-man
+
+echo $USER //show-man
+```
+
+### Add permanently variables:
+
+```
+vi /etc/environment //linux
+
+vi ~/.zshrc //macos zsh
+
+vi ~/.bash_profile //macos bash
+```
+
+**Note**: you have restart session
+
+**Note**: this is shared for all users
+
+### Exporting variable for specific user:
+
+inside `.bashrc` for Linux and `.zshrc` for mac:
+
+```
+export VARIABLE=something //do not use $ at the begining
+```
+
+### Processes:
+
+- Following command will print all current running program that you run
+
+```
+ps
+```
+
+**Note**: run a programm in background need a `&`
+
+```
+sleep 10 &
+ps //should see the sleep programm there
+```
+
+- Following command will print all programm that everyone is running:
+
+```
+ps aux
+```
+
+- Killing a process / programm
+
+```
+kill -9 PID //or kill -SIGKILL PID
+```
+
+### Background and Forground with Processes:
+
+- If you stucked at a running process, then you can move it to backgroud:
+
+- First `CTRL+Z` (will suspend running process)
+
+- Then run `jobs` to get ids
+
+```
+bg %id //for mac
+bg id //for linux
+```
+
+**Note**: use `fg` for bringing back to foreground
+
+**Note**: for listing PID too, use `jobs -l`
+
+### Exit codes:
+
+Getting the previous exit code:
+
+```
+echo $? //if 0 success if not, it was not success
+```
+
+### Conditional running commands `&&`:
+
+```
+touch status.txt && date >> status.txt && uptime >> status.txt
+```
+
+It is depend on exit code `0` means success. If it is success, it will keep going
+
+**Note**: If you want false condition, use `||`.
+
+### Subcommands:
+
+You can run a process inside another process by `$()`:
+
+```
+echo current date is $(date) //It will run date programm inside echo
+```
