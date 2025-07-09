@@ -201,6 +201,18 @@ Usefull example with `ps aux`
 
 - When using `sudo` it will run that specific command as `superuser or root` and then switches back to normal user
 
+### add a new user:
+
+```
+sudo adduser -s /bin/bash -m -g ubuntu kami //set user kami with bash as default and group of ubuntu
+
+sudo passwd kami //setup a new password
+```
+
+**Note**: You have `chmod` the `.ssh` directory to be `700` to be able to work
+
+**Note (optional)**: You can modify access to `authorized_keys` to `600` for everyone to read that
+
 ## Group Permissions:
 
 -rwxrwxrwx
@@ -319,4 +331,76 @@ You can run a process inside another process by `$()`:
 
 ```
 echo current date is $(date) //It will run date programm inside echo
+```
+
+## SSH:
+
+- in summery you have to give `id_rsa.pub` of your primary to the client in `.ssh/authorized_key` file
+
+## SFTP (secure file transfer protocol):
+
+```
+put <local-path-file> <remote-path-file> //uplaod
+```
+
+```
+get <remote-file-path> <local-file-path> //download
+```
+
+## CURL
+
+- Flag `-o` will save output to a file
+
+```
+curl -o result.txt http://localhost:8000/sample.txt //This will overwrite the file every time
+```
+
+- Flag `-X` will modify the request verb. (post / get / put / ...)
+
+```
+curl -X POST -o result.txt http://localhost:8000/sample.txt
+```
+
+- Flag `-d` will add a **POST** body. It will change the request to post unless you change it via `-X`:
+
+```
+curl -d "this is a body" http://localhost:8000/sample.txt
+```
+
+### Be aware of `| bash`!!!:
+
+if you saw some shell command that has `| bash`, be aware because it will execute that file without your control!
+
+Unless you trust the domain!
+
+**Solution?**: remove `| bash` and pipe output into a file. Check output and then run.
+
+## Package Manager:
+
+### aptitude:
+
+A nice UI based package manager, you can see what packages you have and so on. Developed by ubuntu team.
+
+```
+sudo apt-get install aptitude
+```
+
+### Search before install:
+
+```
+apt search node // will show you different packages availabe at apt registery
+```
+
+### Auto remove:
+
+```
+sudo apt autoremove //will safely remove unused packages
+```
+
+### Full upgrade:
+
+Will remove unused and upgrade packages. Usefull if you came back after days
+
+```
+sudo apt full-upgrade
 ```
